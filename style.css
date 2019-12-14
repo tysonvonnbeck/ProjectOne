@@ -4,9 +4,9 @@
     border: 1px solid black;
 }
 
-/* body {
-    overflow: hidden
-} */
+body {
+    overflow-anchor: auto;
+}
 
 /* main content conatimner except footer  */
 container {
@@ -25,10 +25,9 @@ container {
 /* Recents Bar */
 #recents {
     width: 100vw;
-    margin-left: 10%;
-    margin-right: 10%;
     display: flex;
     align-content: space-between;
+    padding-right: 55px;
 
 }
 
@@ -80,7 +79,7 @@ container {
     width: auto;
 }
 
-/* hide footer modal element */
+/* hide footer modal element on page*/
 .hideElem {
     display: none;
 }
