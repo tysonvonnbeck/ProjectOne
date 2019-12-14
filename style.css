@@ -4,7 +4,11 @@
     border: 1px solid black;
 }
 
-/* main body of search page  */
+/* body {
+    overflow: hidden
+} */
+
+/* main content conatimner except footer  */
 container {
     display:flex;
     align-items: center;
@@ -17,3 +21,66 @@ container {
 
 .modal.bottom-sheet {
      max-height: 100%; overflow: visible}
+
+/* Recents Bar */
+#recents {
+    width: 100vw;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    align-content: space-between;
+
+}
+
+#r0 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r1 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r2 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r3 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r4 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r5 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r6 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+#r7 {
+    align-content: center;
+    padding-top: .5%;
+    width: auto;
+}
+
+/* hide footer modal element */
+.hideElem {
+    display: none;
+}
