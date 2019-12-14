@@ -1,0 +1,19 @@
+/* optional border to view divs */
+/* comment out to hide */
+* {
+    border: 1px solid black;
+}
+
+/* main body of search page  */
+container {
+    display:flex;
+    align-items: center;
+}
+
+.results {
+    height: 65px;
+    margin-bottom: 10px;
+}
+
+.modal.bottom-sheet {
+     max-height: 100%; overflow: visible}
