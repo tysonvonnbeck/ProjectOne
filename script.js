@@ -90,3 +90,21 @@ function getOMDBValues(response){
     }
 
  }
+
+
+function getUtelly(){
+ var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + myMovie +"&country=us",
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+    "x-rapidapi-key": "7dc19fa4d2msh8aed653ea90430cp188de1jsnbb205bece2f5"
+  }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+}
