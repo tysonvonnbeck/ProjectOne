@@ -87,6 +87,30 @@ container {
     display: none;
 }
 
+
+/* Style search result poster image */
+
+#oResult0 img{
+    width: 50%;
+    height: auto;
+}
+
+
+#oResult1 img{
+    width: 150;
+    height: 222;
+}
+
+#oResult2 img{
+    width: 50%;
+    height: auto;
+}
+
+/* .resultImage{
+    width: 50%;
+    height: auto;
+} */
+
 /* #trailer{
     resize: both;
     overflow: auto;
@@ -234,3 +258,4 @@ body.welcome {
       opacity: 0;
     }
   } 
+
