@@ -2,11 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Favicon -->
-    <link rel='icon' href='search.ico' type='image/x-icon'/>
-    <link rel="shortcut icon" href="search.ico" type="image/x-icon" />
+    <link rel='icon' href='parlor.ico' type='image/x-icon'/>
+    <link rel="shortcut icon" href="parlor.ico" type="image/x-icon" />
+    <!-- Google font Abel -->
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap" rel="stylesheet">
+
     <!-- Materialize Compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -15,24 +19,27 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="style.css" />
-
-    <title>Popcorn</title>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Parlor Flix</title>
   </head>
 
-  <!-- Body -->
+      <!-- navbar -->
+      <nav>
+        <div class="navbar-fixed nav-wrapper grey center" id="navbar">
+          <a href="" class="brand-logo center">PARLOR FLIX</a>
+        </div>
+      </nav>
+
+      <!-- Body -->
   <body class="welcome">
     <span id="splash-overlay" class="splash"></span>
     <span id="welcome" class="z-depth-4"></span>
     <div class="container">
-
-      <!-- navbar -->
-      <header class="navbar-fixed">
-      </header>
-      <!-- row for Title -->
-      <div class="row">
-        <div class="col s12 flow-text">
-          <p>TITLE of APP</p>
+      <!-- space between nav and search -->
+      <br>
+      <br>
+      <br>
+      <br>
           <!-- Search Bar row -->
           <div class="row">
             <div class="col s12">
@@ -46,14 +53,12 @@
                   />
                   <label for="autocomplete-input"
                     >movie or show title
-                    <a class="btn waves-effect waves-light red right">Find</a>
+                    <a class="btn waves-effect waves-light grey right">Find</a>
                   </label>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
       <!-- results -->
       <div class="row">
         <div
@@ -94,38 +99,36 @@
     </div> <!--end row 2-->
        </div>
       </div>
-
-     
-    </div>
     <!-- container close-->
 
+      <!-- Footer -->
+      <footer class="page-footer grey row center-align" id="recents">
      <!-- Recents Bar -->
-     <div class="row center-align" id="recents">
         <div class="col s1" id="r0">
-        <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+        <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
             </div>
         <div class="col s1" id="r1">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img  href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r2">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r3">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r4">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r5">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r6">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
         <div class="col s1" id="r7">
-            <img class="responsive-img" src="https://via.placeholder.com/50" alt="">
+            <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
         </div>
-        </div>
+      </footer>
 
             <!-- Modal -->
             <div id="modal1" style="width:100%;height:80%;"  class="modal bottom-sheet">
@@ -133,15 +136,16 @@
                <h4 >Title</h4>
              </div>
              <!-- Youtube 'Official Trailers' -->
-             <div class="video-container" id="trailer">
-                <iframe width="auto" height="240" src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allowfullscreen></iframe>
+             <div id="trailer">
+                <iframe class="iframe" width="auto" height="240" src="https://www.youtube.com/embed/ScMzIvxBSi4" allow="encrypted-media"  allowfullscreen></iframe>
               </div>
              </div>
              
              
              <div class="modal-footer hideElem">
                <a href="#!" class="modal-close waves-effect waves-green" a>
-             </div>
+
+            </div>
 
         <!-- JQuery uncompressed -->
     <script
