@@ -114,5 +114,17 @@ function getUtelly(){
 
     $.ajax(settings).done(function (response) {
       console.log("Utelly" + response);
+      console.log(response);
+      //gets image url of result from uTelly
+      var utellyImageURL = response.results[0].picture;
+      console.log(utellyImageURL);
+      //gets a varying number of site sources from uTelly
+      for (let i = 0; i < response.results[0].locations.length; i++) {
+        var siteName = response.results[0].locations[i].display_name;
+        var siteURL = response.results[0].locations[i].url;
+        console.log(siteName + ": " + siteURL);
+      }
     });
 }
+
+getUtelly();
