@@ -90,21 +90,23 @@ container {
 
 /* Style search result poster image */
 
-#oResult0 img{
+
+
+ #oResult0 img{
     width: 50%;
     height: auto;
-}
+}  
 
 
 #oResult1 img{
-    width: 150;
-    height: 222;
+    width: auto;
+    height: 65px;
 }
 
-#oResult2 img{
+ #oResult2 img{
     width: 50%;
     height: auto;
-}
+}  
 
 /* .resultImage{
     width: 50%;

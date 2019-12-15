@@ -12,6 +12,7 @@ var OMDBresponse;
 var omTitle;
 var omPosterUrl;
 var omType;
+var omYear;
 var displayLength= 3;
 var movieList = {
   title: "",
@@ -49,6 +50,7 @@ function getOMDBValues(response){
    console.log("omTitle = " + omTitle);
    omPosterUrl= response.Search[0].Poster;
    console.log("OmPosterURl="+ omPosterUrl );
+   omYear=response.Search[0].Year;
    console.log(response.Search.length);
   //calculate if displayLength is greater than length of resultarry
    var resplength =  response.Search.length;
@@ -83,20 +85,26 @@ function getOMDBValues(response){
   
       // Set the title;
       var ptag = $('<p>')
-      ptag.attr("id", "omResTitle"+i);
+      // ptag.attr("id", "oResultTitle"+i);
       ptag.text("Title: " + omTitle);
-      // ptag.appendTo('#oResult' + i)
-        
+      ptag.appendTo('#oResultTitle' + i)
+
+      //Set the info
+      var ptag = $('<p>')
+      var infoText = "Year: " + omYear + "                    Type: " +omType ;
+      ptag.text(infoText);
+      ptag.appendTo('#oResultInfo' + i);
+      
     }
 
  }
 
-
+//****************************************************************************  UTELLY SECITON *********************************************************************************************** */
 function getUtelly(){
  var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + myMovie +"&country=us",
+  url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + myMovie +"&country=us",
   "method": "GET",
   "headers": {
     "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
@@ -105,6 +113,7 @@ function getUtelly(){
     }
 
     $.ajax(settings).done(function (response) {
+      console.log("Utelly" + response);
       console.log(response);
       //gets image url of result from uTelly
       var utellyImageURL = response.results[0].picture;
