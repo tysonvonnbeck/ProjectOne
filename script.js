@@ -128,3 +128,22 @@ function getUtelly(){
 }
 
 getUtelly();
+
+//YOUTUBE section
+
+function getYoutube(){
+  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ myMovie + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
+  $.ajax({
+  url: queryURL,
+  method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    //gets video ID from youtube
+    var videoId = response.items[0].id.videoId;
+    console.log(videoId);
+    //creates the full video URL utilizing the video ID
+    var videoURL = "https://www.youtube.com/watch?v=" + videoId;
+    console.log(videoURL);
+  })
+}
+getYoutube();
