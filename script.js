@@ -1,13 +1,3 @@
-//Click Button Event 
-
-
-//**********************************************OMBDB Section ****************************************/
-
-
-
-
-//***********************Declare Global variables for OMDB****************************************************
-var myMovie= "Star Trek";
 var OMDBresponse;
 var omTitle;
 var omPosterUrl;
@@ -22,20 +12,23 @@ var movieList = {
  };
 
 
-//
-myMovie= myMovie.replace(" ","+");  //create string to insert into url request
-console.log("OMDB:myMovie = " + myMovie);
+ $("#findbtn").on("click", function(){
+  console.log($("#autocomplete-input").val());
+  let userSearch=$("#autocomplete-input").val().trim();
+  getOMDB(userSearch)
+  getUtelly(userSearch)
+
+})
 
 
-getOMDB();
-
-function getOMDB(){
- $.ajax({
+function getOMDB(someMovie){
+    someMovie=someMovie.replace(" ","+");
+    $.ajax({
     //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
-     url: "https://www.omdbapi.com/?s="+myMovie+"&y=&plot=short&apikey=trilogy",
+     url: "https://www.omdbapi.com/?s="+someMovie+"&y=&plot=short&apikey=trilogy",
     method: "GET"
   }).then(function(response) {
-    console.log(response);
+    // console.log(response);
     getOMDBValues(response);
     // return response;
   });
@@ -55,7 +48,7 @@ function getOMDBValues(response){
    if (resplength < displayLength){
       displayLength = resplength;
    }
-    console.log(displayLength);
+    // console.log(displayLength);
     
     //loop for getting the values.
   for(var i =0; i < displayLength; i++){
@@ -92,11 +85,11 @@ function getOMDBValues(response){
  }
 
 
-function getUtelly(){
+function getUtelly(userSearch){
  var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + myMovie +"&country=us",
+  "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + userSearch +"&country=us",
   "method": "GET",
   "headers": {
     "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
