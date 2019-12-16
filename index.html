@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -7,7 +8,8 @@
   <link rel='icon' href='parlor.ico' type='image/x-icon' />
   <link rel="shortcut icon" href="parlor.ico" type="image/x-icon" />
   <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap"
+    rel="stylesheet">
   <!-- Materialize Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <!--Let browser know website is optimized for mobile-->
@@ -18,68 +20,66 @@
 </head>
 
 <!-- navbar -->
-<nav>
-  <div class="navbar-fixed nav-wrapper grey center" id="navbar">
+<nav class="z-depth-0 blue-grey lighten-2">
+  <div class="navbar-fixed nav-wrapper center" id="navbar">
     <a href="" class="brand-logo center">PARLOR FLIX</a>
   </div>
 </nav>
 
-      <!-- Body -->
-  <body class="welcome">
-    <span id="splash-overlay" class="splash"></span>
-    <span id="welcome" class="z-depth-4"></span>
-    <div class="container">
-      <!-- space between nav and search -->
-      <br>
-      <br>
-      <br>
-      <br>
-          <!-- Search Bar -->
-              <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix"></i>
-                  <label for="autocomplete-input">movie or show title
-                  </label>
-                  <input
-                    type="text"
-                    id="autocomplete-input"
-                    class="autocomplete"/>
-                  <a class="btn waves-effect waves-light grey right" id="findbtn">Find</a>
-                </div>
-              </div>
-      <!-- results -->
-      <div class="row">
-        <div href="#modal1" class="col s2 movie-poster results waves-effect waves-light modal-trigger" id="oResult0">
-          <!--Poster goes here-->
-        </div>
-        <div class="col s10  oResultText">
-          <div class="row" id=oResultTitle0></div>
-          <div class="row" id=oResultInfo0></div>
-        </div>
-      </div>
-      <!--end row 1-->
-      
-      <div class="row">
-        <div href="#modal1" class="col s2 movie-poster results  waves-effect waves-light modal-trigger" id="oResult1">
-          <!--Poster goes here-->
-        </div>
-        <div class="col s10  oResultText">
-          <div class="row" id=oResultTitle1></div>
-          <div class="row" id=oResultInfo1></div>
-        </div>
-      </div>
-      <!--end row 2-->
+<!-- Body -->
 
-      <div class="row">
-        <div href="#modal1" class="col s2 movie-poster results  waves-effect waves-light modal-trigger" id="oResult2">
-          <!--Poster goes here-->
-        </div>
-        <div class="col s10  oResultText">
-          <div class="row" id=oResultTitle2></div>
-          <div class="row" id=oResultInfo2></div>
-        </div>
+<body class="welcome blue-grey lighten-2">
+  <span id="splash-overlay" class="splash"></span>
+  <span id="welcome" class="z-depth-4"></span>
+  <div class="container">
+    <!-- space between nav and search -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Search Bar -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix"></i>
+        <label for="autocomplete-input">movie or show title
+        </label>
+        <input type="text" id="autocomplete-input" class="autocomplete" />
+        <a class="btn waves-effect waves-light blue-grey lighten-1 right" id="findbtn">Find</a>
       </div>
-      <!--end row 3-->
+    </div>
+    <!-- results -->
+    <div class="row">
+      <div href="#modal1" class="col s2 movie-poster results waves-effect waves-light modal-trigger" id="oResult0">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s10  oResultText">
+        <div class="row" id=oResultTitle0></div>
+        <div class="row" id=oResultInfo0></div>
+      </div>
+    </div>
+    <!--end row 1-->
+
+    <div class="row">
+      <div href="#modal1" class="col s2 movie-poster results  waves-effect waves-light modal-trigger" id="oResult1">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s10  oResultText">
+        <div class="row" id=oResultTitle1></div>
+        <div class="row" id=oResultInfo1></div>
+      </div>
+    </div>
+    <!--end row 2-->
+
+    <div class="row">
+      <div href="#modal1" class="col s2 movie-poster results  waves-effect waves-light modal-trigger" id="oResult2">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s10  oResultText">
+        <div class="row" id=oResultTitle2></div>
+        <div class="row" id=oResultInfo2></div>
+      </div>
+    </div>
+    <!--end row 3-->
 
   </div>
   </div>
@@ -88,7 +88,7 @@
 
 
   <!-- Footer -->
-  <footer class="page-footer grey row center-align" id="recents">
+  <footer class="page-footer blue-grey lighten-1 row center-align" id="recents">
     <!-- Recents Bar -->
     <div class="col s1" id="r0">
       <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
