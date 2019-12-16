@@ -24,7 +24,7 @@ container {
     /* flex-direction: column; */
 }
 
-.modal-container {
+.modal-container .container {
     width: 90%;
 }
 
