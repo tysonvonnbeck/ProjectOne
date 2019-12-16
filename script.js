@@ -4,6 +4,7 @@ var omPosterUrl;
 var omType;
 var omYear;
 var displayLength= 3;
+
 var movieList = {
   title: "",
   year:"",
@@ -19,9 +20,19 @@ var movieList = {
   getOMDB(userSearch);
   getUtelly(userSearch);
   getYoutube(userSearch);
-
+  //localStorage.setItem(userSearch,userSearch);
 })
 
+function omClickPic(){
+   console.log("onClickPic")
+   var testMovie="Star+Trek";
+   getOMDB2(testMovie)
+  
+
+
+}
+
+omClickPic();
 
 function getOMDB(someMovie){
     someMovie=someMovie.replace(" ","+");
@@ -35,6 +46,24 @@ function getOMDB(someMovie){
     // return response;
   });
   
+}
+
+function getOMDB2(someMovie){
+  someMovie=someMovie.replace(" ","+");
+  $.ajax({
+  //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
+  url: "https://www.omdbapi.com/?t=Star+Wars&plot=full&apikey=trilogy",
+  // url: "https://www.omdbapi.com/?t="+someMovie+"&y=&plot=short&apikey=trilogy",
+  method: "GET"
+}).then(function(response) {
+  console.log("getOMDB2");
+  console.log( response);
+  console.log
+  getOMB2Values(response);
+ 
+  // return response;
+});
+
 }
 
 
@@ -91,6 +120,29 @@ function getOMDBValues(response){
       
     }
 
+ }
+
+ function getOMB2Values(response){
+   console.log("getOMDB2Values");
+   var imdbRating = response.Ratings[0].Value;
+   console.log(imdbRating);
+   $("#imdb-rate").text(imdbRating);
+   var rottenRating = response.Ratings[1].Value;
+   console.log(rottenRating);
+   $("#rotten-rate").text(rottenRating);
+   var metaRating = response.Ratings[2].Value;
+   console.log(metaRating);
+   $("meta-rate").text(metaRating);
+   omTitle = response.Title;
+   console.log(omTitle);
+   $("h4").text(omTitle);
+   omYear = response.Year;
+   $(".year").text(omYear);
+   console.log(omYear);
+   //set the rating
+   var omRated= response.Rated;
+   $(".MPAA").text(omRated);
+   console.log(omRated);
  }
 
 
