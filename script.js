@@ -123,6 +123,7 @@ function getUtelly(userSearch){
         var siteDisplay = $("<a>");
         siteDisplay.text(siteName);
         siteDisplay.attr("href", siteURL);
+        siteDisplay.addClass("siteLinks");
         $(".streamLinks").append(siteDisplay);
       }
     });
