@@ -4,6 +4,7 @@ var omPosterUrl;
 var omType;
 var omYear;
 var displayLength= 3;
+var modalMovie;
 var movieList = {
   title: "",
   year:"",
@@ -14,13 +15,12 @@ var movieList = {
 
 
  $("#findbtn").on("click", function(){
+  clearResults();
   console.log($("#autocomplete-input").val());
   let userSearch=$("#autocomplete-input").val().trim();
   getOMDB(userSearch);
-  getUtelly(userSearch);
-  getYoutube(userSearch);
-
 })
+
 
 
 function getOMDB(someMovie){
@@ -37,7 +37,43 @@ function getOMDB(someMovie){
   
 }
 
+function getOMDB2(someMovie){
+  someMovie=someMovie.replace(" ","+");
+  $.ajax({
+  //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
+  url: "https://www.omdbapi.com/?t="+someMovie + "&plot=full&apikey=trilogy",
+  // url: "https://www.omdbapi.com/?t="+someMovie+"&y=&plot=short&apikey=trilogy",
+  method: "GET"
+}).then(function(response) {
+  console.log("getOMDB2");
+  console.log( response);
+  console.log
+  getOMB2Values(response);
+ 
+  // return response;
+});
 
+}
+
+function clearResults(){
+  console.log("clearResults");
+  for(var i =0; i < displayLength; i++){
+     $('#oResultTitle' + i).text("");
+    //display Results
+
+     // Remove the poster images
+    $("#omResPoster"+i).remove();
+     
+    // Remove the Title;
+    $("oResultTitle"+i).text("");
+    
+        //Set the info
+    $('#oResultInfo'+i).text("");
+    
+  }
+
+
+}
 function getOMDBValues(response){
    console.log("getOMBDBVal");
    omTitle = response.Search[0].Title;
@@ -93,9 +129,33 @@ function getOMDBValues(response){
 
  }
 
+ function getOMB2Values(response){
+   console.log("getOMDB2Values");
+   var imdbRating = response.Ratings[0].Value;
+   console.log(imdbRating);
+   $("#imdb-rate").text(imdbRating);
+   var rottenRating = response.Ratings[1].Value;
+   console.log(rottenRating);
+   $("#rotten-rate").text(rottenRating);
+   var metaRating = response.Ratings[2].Value;
+   console.log(metaRating);
+   $("meta-rate").text(metaRating);
+   var omTitle2 = response.Title;
+   console.log(omTitle2);
+   $("h4").text(omTitle2);
+   omYear = response.Year;
+   $(".year").text(omYear);
+   console.log(omYear);
+   //set the rating
+   var omRated= response.Rated;
+   $(".MPAA").text(omRated);
+   console.log(omRated);
+ }
+
 
 //****************************************************************************  UTELLY SECITON *********************************************************************************************** */
 function getUtelly(userSearch){
+  $(".streamLinks").empty();
  var settings = {
   "async": true,
   "crossDomain": true,
@@ -129,12 +189,12 @@ function getUtelly(userSearch){
     });
 }
 
-getUtelly();
+// getUtelly();
 
 //YOUTUBE section
 
 function getYoutube(userSearch){
-  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
+  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC-JojAakkhpwq-_QbOwSZscB93_RgrT2A";
   $.ajax({
   url: queryURL,
   method: "GET"
@@ -150,4 +210,26 @@ function getYoutube(userSearch){
     $(".iframe").attr("src", videoURL);
   })
 }
-getYoutube();
+// getYoutube();
+
+$("#oResult0").click(function(){
+  modalMovie = $("#oResultTitle0").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
+$("#oResult1").click(function(){
+  modalMovie = $("#oResultTitle1").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
+$("#oResult2").click(function(){
+  modalMovie = $("#oResultTitle2").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
