@@ -90,7 +90,6 @@ container {
 
 .results {
     height: 65px;
-    margin-bottom: 10px;
     opacity: 0;
     animation: moveIn 2s 3.1s ease forwards;
     /* box-shadow: 10px 10px 5px 0px rgba(250,250,250,1); */
@@ -174,23 +173,33 @@ footer {
 
 /* Style search result poster image */
 
+.movie-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
 
+.movie-poster > img {
+    width: auto;
+    height: 100%;
+}
 
- #oResult0 img{
-    width: 50%;
-    height: auto;
+ /* #oResult0 img{
+    width: auto;
+    height: 100%;
 }  
 
 
 #oResult1 img{
     width: auto;
-    height: 65px;
+    height: 100%;
 }
 
  #oResult2 img{
-    width: 50%;
-    height: auto;
-}  
+    width: auto;
+    height: 100%;
+}   */
 
 /* .resultImage{
     width: 50%;
