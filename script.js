@@ -4,7 +4,7 @@ var omPosterUrl;
 var omType;
 var omYear;
 var displayLength= 3;
-
+var modalMovie;
 var movieList = {
   title: "",
   year:"",
@@ -18,9 +18,12 @@ var movieList = {
   console.log($("#autocomplete-input").val());
   let userSearch=$("#autocomplete-input").val().trim();
   getOMDB(userSearch);
-  getUtelly(userSearch);
-  getYoutube(userSearch);
-  //localStorage.setItem(userSearch,userSearch);
+
+
+  // getUtelly(userSearch);
+  // getYoutube(userSearch);
+
+
 })
 
 function omClickPic(){
@@ -148,6 +151,7 @@ function getOMDBValues(response){
 
 //****************************************************************************  UTELLY SECITON *********************************************************************************************** */
 function getUtelly(userSearch){
+  $(".streamLinks").empty();
  var settings = {
   "async": true,
   "crossDomain": true,
@@ -181,12 +185,12 @@ function getUtelly(userSearch){
     });
 }
 
-getUtelly();
+// getUtelly();
 
 //YOUTUBE section
 
 function getYoutube(userSearch){
-  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
+  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC-JojAakkhpwq-_QbOwSZscB93_RgrT2A";
   $.ajax({
   url: queryURL,
   method: "GET"
@@ -202,4 +206,23 @@ function getYoutube(userSearch){
     $(".iframe").attr("src", videoURL);
   })
 }
-getYoutube();
+// getYoutube();
+
+$("#oResult0").click(function(){
+  modalMovie = $("#oResultTitle0").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
+$("#oResult1").click(function(){
+  modalMovie = $("#oResultTitle1").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
+$("#oResult2").click(function(){
+  modalMovie = $("#oResultTitle2").text();
+  var modifiedTitle = modalMovie.replace("Title: ", "");
+  getUtelly(modifiedTitle);
+  getYoutube(modifiedTitle);
+})
