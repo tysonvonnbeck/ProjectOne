@@ -1,13 +1,3 @@
-//Click Button Event 
-
-
-//**********************************************OMBDB Section ****************************************/
-
-
-
-
-//***********************Declare Global variables for OMDB****************************************************
-var myMovie= "Star Trek";
 var OMDBresponse;
 var omTitle;
 var omPosterUrl;
@@ -23,20 +13,24 @@ var movieList = {
  };
 
 
-//
-myMovie= myMovie.replace(" ","+");  //create string to insert into url request
-console.log("OMDB:myMovie = " + myMovie);
+ $("#findbtn").on("click", function(){
+  console.log($("#autocomplete-input").val());
+  let userSearch=$("#autocomplete-input").val().trim();
+  getOMDB(userSearch);
+  getUtelly(userSearch);
+  getYoutube(userSearch);
+
+})
 
 
-getOMDB();
-
-function getOMDB(){
- $.ajax({
+function getOMDB(someMovie){
+    someMovie=someMovie.replace(" ","+");
+    $.ajax({
     //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
-     url: "https://www.omdbapi.com/?s="+myMovie+"&y=&plot=short&apikey=trilogy",
+     url: "https://www.omdbapi.com/?s="+someMovie+"&y=&plot=short&apikey=trilogy",
     method: "GET"
   }).then(function(response) {
-    console.log(response);
+    // console.log(response);
     getOMDBValues(response);
     // return response;
   });
@@ -57,7 +51,7 @@ function getOMDBValues(response){
    if (resplength < displayLength){
       displayLength = resplength;
    }
-    console.log(displayLength);
+    // console.log(displayLength);
     
     //loop for getting the values.
   for(var i =0; i < displayLength; i++){
@@ -99,12 +93,13 @@ function getOMDBValues(response){
 
  }
 
+
 //****************************************************************************  UTELLY SECITON *********************************************************************************************** */
-function getUtelly(){
+function getUtelly(userSearch){
  var settings = {
   "async": true,
   "crossDomain": true,
-  url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + myMovie +"&country=us",
+  url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + userSearch +"&country=us",
   "method": "GET",
   "headers": {
     "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
@@ -118,11 +113,18 @@ function getUtelly(){
       //gets image url of result from uTelly
       var utellyImageURL = response.results[0].picture;
       console.log(utellyImageURL);
+      // sets modal image source to utelly image
+      $(".modalImage").attr("src", utellyImageURL);
       //gets a varying number of site sources from uTelly
       for (let i = 0; i < response.results[0].locations.length; i++) {
         var siteName = response.results[0].locations[i].display_name;
         var siteURL = response.results[0].locations[i].url;
         console.log(siteName + ": " + siteURL);
+        var siteDisplay = $("<a>");
+        siteDisplay.text(siteName);
+        siteDisplay.attr("href", siteURL);
+        siteDisplay.addClass("siteLinks");
+        $(".streamLinks").append(siteDisplay);
       }
     });
 }
@@ -131,8 +133,8 @@ getUtelly();
 
 //YOUTUBE section
 
-function getYoutube(){
-  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ myMovie + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
+function getYoutube(userSearch){
+  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
   $.ajax({
   url: queryURL,
   method: "GET"
@@ -142,8 +144,10 @@ function getYoutube(){
     var videoId = response.items[0].id.videoId;
     console.log(videoId);
     //creates the full video URL utilizing the video ID
-    var videoURL = "https://www.youtube.com/watch?v=" + videoId;
+    var videoURL = "https://www.youtube.com/embed/" + videoId;
     console.log(videoURL);
+    //sets the modal video url to the youtube video responce
+    $(".iframe").attr("src", videoURL);
   })
 }
 getYoutube();

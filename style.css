@@ -24,11 +24,11 @@ container {
     /* flex-direction: column; */
 }
 
-.modal-container {
+.modal-container .container {
     width: 90%;
 }
 
-#modal1 .button a {
+.siteLinks {
     display: block;
     background-color: #777;
     color: white;
@@ -104,6 +104,7 @@ footer {
   height: auto;
   padding: 0 0 0 0;
   margin: 0 0 0 0;
+  
 }
 
 /* Recents Bar */

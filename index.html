@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <!-- Favicon -->
   <link rel='icon' href='parlor.ico' type='image/x-icon' />
   <link rel="shortcut icon" href="parlor.ico" type="image/x-icon" />
-  <!-- Google font Abel -->
-  <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
   <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap" rel="stylesheet">
   <!-- Materialize Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
   <!--Let browser know website is optimized for mobile-->
@@ -29,66 +24,68 @@
   </div>
 </nav>
 
-<!-- Body -->
-
-<body class="welcome">
-  <span id="splash-overlay" class="splash"></span>
-  <span id="welcome" class="z-depth-4"></span>
-  <div class="container">
-    <!-- space between nav and search -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- Search Bar row -->
-    <div class="row">
-      <div class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix"></i>
-            <input type="text" id="autocomplete-input" class="autocomplete" />
-            <label for="autocomplete-input">movie or show title
-              <a class="btn waves-effect waves-light grey right">Find</a>
-            </label>
-          </div>
+      <!-- Body -->
+  <body class="welcome">
+    <span id="splash-overlay" class="splash"></span>
+    <span id="welcome" class="z-depth-4"></span>
+    <div class="container">
+      <!-- space between nav and search -->
+      <br>
+      <br>
+      <br>
+      <br>
+          <!-- Search Bar -->
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix"></i>
+                  <label for="autocomplete-input">movie or show title
+                  </label>
+                  <input
+                    type="text"
+                    id="autocomplete-input"
+                    class="autocomplete"/>
+                  <a class="btn waves-effect waves-light grey right" id="findbtn">Find</a>
+                </div>
+              </div>
+      <!-- results -->
+      <div class="row">
+        <div href="#modal1" class="col s2 results waves-effect waves-light modal-trigger" id="oResult0">
+          <!--Poster goes here-->
+        </div>
+        <div class="col s10  oResultText">
+          <div class="row" id=oResultTitle0></div>
+          <div class="row" id=oResultInfo0></div>
         </div>
       </div>
-    </div>
-    <!-- results -->
-    <div class="row">
-      <div href="#modal1" class="col s2 results waves-effect waves-light modal-trigger" id="oResult0">
-        <!--Poster goes here-->>
+      <!--end row 1-->
+      
+      <div class="row">
+        <div href="#modal1" class="col s2 results  waves-effect waves-light modal-trigger" id="oResult1">
+          <!--Poster goes here-->
+        </div>
+        <div class="col s10  oResultText">
+          <div class="row" id=oResultTitle1></div>
+          <div class="row" id=oResultInfo1></div>
+        </div>
       </div>
+      <!--end row 2-->
 
-      <div class="col s10  oResultText">
-        <div class="row" id=oResultTitle0></div>
-        <div class="row" id=oResultInfo0></div>
+      <div class="row">
+        <div href="#modal1" class="col s2 results  waves-effect waves-light modal-trigger" id="oResult2">
+          <!--Poster goes here-->
+        </div>
+        <div class="col s10  oResultText">
+          <div class="row" id=oResultTitle2></div>
+          <div class="row" id=oResultInfo2></div>
+        </div>
       </div>
-    </div>
-    <!--end row 1-->
-    <div class="row">
-      <div href="#modal1" class="col s2 results  waves-effect waves-light modal-trigger" id="oResult1">
-        <!--Poster goes here-->>
-      </div>
-      <div class="col s10  oResultText">
-        <div class="row" id=oResultTitle1></div>
-        <div class="row" id=oResultInfo1></div>
-      </div>
-    </div>
-    <!--end row 2-->
-    <div class="row">
-      <div href="#modal1" class="col s2 results  waves-effect waves-light modal-trigger" id="oResult2">
-        <!--Poster goes here-->>
-      </div>
-      <div class="col s10  oResultText">
-        <div class="row" id=oResultTitle2></div>
-        <div class="row" id=oResultInfo2></div>
-      </div>
-    </div>
-    <!--end row 2-->
+      <!--end row 3-->
+
   </div>
   </div>
   <!-- container close-->
+
+ 
 
   <!-- Footer -->
   <footer class="page-footer grey row center-align" id="recents">
@@ -122,7 +119,7 @@
   <!-- Modal -->
   <div id="modal1" style="width:100%;height:80%;" class="modal bottom-sheet">
     <!-- modal container -->
-    <div class="container modal-container">
+    <div class="modal-container">
       <div class="modal-content">
         <div class="title-row">
           <div>
@@ -150,12 +147,13 @@
         <div class="row content-row">
           <div class="col s4 poster-column">
             <!-- poster goes here -->
-            <img src="http://www.placekitten.com/200/300" alt="">
+            <img class="modalImage" src="http://www.placekitten.com/200/300" alt="">
           </div>
           <div class="col s2">
             <!-- list of streaming links goes here -->
             <h3>STREAMING</h3>
-            <div class="button netflix">
+            <div class="streamLinks"></div>
+            <!-- <div class="button netflix">
               <a href="http://www.netflix.com">Netflix</a>
             </div>
             <div class="button itunes">
@@ -166,7 +164,7 @@
             </div>
             <div class="button google">
               <a href="http://www.google.com">Google Play</a>
-            </div>
+            </div> -->
           </div>
           <div class="col s6">
             <h3>TRAILER</h3>
@@ -175,16 +173,15 @@
                 allowfullscreen></iframe>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
-    <!-- container close -->
+    <!-- modal container close -->
 
-
+    <!-- modal footer hidden -->
     <div class="modal-footer hideElem">
       <a href="#!" class="modal-close waves-effect waves-green" a>
-
     </div>
 
     <!-- JQuery uncompressed -->
