@@ -15,27 +15,13 @@ var movieList = {
 
 
  $("#findbtn").on("click", function(){
+  clearResults();
   console.log($("#autocomplete-input").val());
   let userSearch=$("#autocomplete-input").val().trim();
   getOMDB(userSearch);
-
-
-  // getUtelly(userSearch);
-  // getYoutube(userSearch);
-
-
 })
 
-function omClickPic(){
-   console.log("onClickPic")
-   var testMovie="Star+Trek";
-   getOMDB2(testMovie)
-  
 
-
-}
-
-omClickPic();
 
 function getOMDB(someMovie){
     someMovie=someMovie.replace(" ","+");
@@ -55,7 +41,7 @@ function getOMDB2(someMovie){
   someMovie=someMovie.replace(" ","+");
   $.ajax({
   //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
-  url: "https://www.omdbapi.com/?t=Star+Wars&plot=full&apikey=trilogy",
+  url: "https://www.omdbapi.com/?t="+someMovie + "&plot=full&apikey=trilogy",
   // url: "https://www.omdbapi.com/?t="+someMovie+"&y=&plot=short&apikey=trilogy",
   method: "GET"
 }).then(function(response) {
@@ -69,7 +55,25 @@ function getOMDB2(someMovie){
 
 }
 
+function clearResults(){
+  console.log("clearResults");
+  for(var i =0; i < displayLength; i++){
+     $('#oResultTitle' + i).text("");
+    //display Results
 
+     // Remove the poster images
+    $("#omResPoster"+i).remove();
+     
+    // Remove the Title;
+    $("oResultTitle"+i).text("");
+    
+        //Set the info
+    $('#oResultInfo'+i).text("");
+    
+  }
+
+
+}
 function getOMDBValues(response){
    console.log("getOMBDBVal");
    omTitle = response.Search[0].Title;
@@ -136,9 +140,9 @@ function getOMDBValues(response){
    var metaRating = response.Ratings[2].Value;
    console.log(metaRating);
    $("meta-rate").text(metaRating);
-   omTitle = response.Title;
-   console.log(omTitle);
-   $("h4").text(omTitle);
+   var omTitle2 = response.Title;
+   console.log(omTitle2);
+   $("h4").text(omTitle2);
    omYear = response.Year;
    $(".year").text(omYear);
    console.log(omYear);
@@ -211,18 +215,21 @@ function getYoutube(userSearch){
 $("#oResult0").click(function(){
   modalMovie = $("#oResultTitle0").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
 })
 $("#oResult1").click(function(){
   modalMovie = $("#oResultTitle1").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
 })
 $("#oResult2").click(function(){
   modalMovie = $("#oResultTitle2").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
 })
