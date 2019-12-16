@@ -16,8 +16,8 @@ var movieList = {
  $("#findbtn").on("click", function(){
   console.log($("#autocomplete-input").val());
   let userSearch=$("#autocomplete-input").val().trim();
-  getOMDB(userSearch)
-  getUtelly(userSearch)
+  getOMDB(userSearch);
+  getUtelly(userSearch);
   getYoutube(userSearch);
 
 })
@@ -120,6 +120,10 @@ function getUtelly(userSearch){
         var siteName = response.results[0].locations[i].display_name;
         var siteURL = response.results[0].locations[i].url;
         console.log(siteName + ": " + siteURL);
+        var siteDisplay = $("<a>");
+        siteDisplay.text(siteName);
+        siteDisplay.attr("href", siteURL);
+        $(".streamLinks").append(siteDisplay);
       }
     });
 }

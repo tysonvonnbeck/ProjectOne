@@ -28,7 +28,7 @@ container {
     width: 90%;
 }
 
-#modal1 .button a {
+.streamLinks {
     display: block;
     background-color: #777;
     color: white;
