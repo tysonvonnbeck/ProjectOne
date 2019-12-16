@@ -2,6 +2,7 @@ var OMDBresponse;
 var omTitle;
 var omPosterUrl;
 var omType;
+var omYear;
 var displayLength= 3;
 var movieList = {
   title: "",
@@ -17,6 +18,7 @@ var movieList = {
   let userSearch=$("#autocomplete-input").val().trim();
   getOMDB(userSearch)
   getUtelly(userSearch)
+  getYoutube(userSearch);
 
 })
 
@@ -42,6 +44,7 @@ function getOMDBValues(response){
    console.log("omTitle = " + omTitle);
    omPosterUrl= response.Search[0].Poster;
    console.log("OmPosterURl="+ omPosterUrl );
+   omYear=response.Search[0].Year;
    console.log(response.Search.length);
   //calculate if displayLength is greater than length of resultarry
    var resplength =  response.Search.length;
@@ -76,10 +79,16 @@ function getOMDBValues(response){
   
       // Set the title;
       var ptag = $('<p>')
-      ptag.attr("id", "omResTitle"+i);
+      // ptag.attr("id", "oResultTitle"+i);
       ptag.text("Title: " + omTitle);
-      // ptag.appendTo('#oResult' + i)
-        
+      ptag.appendTo('#oResultTitle' + i)
+
+      //Set the info
+      var ptag = $('<p>')
+      var infoText = "Year: " + omYear + "                    Type: " +omType ;
+      ptag.text(infoText);
+      ptag.appendTo('#oResultInfo' + i);
+      
     }
 
  }
@@ -90,6 +99,12 @@ function getUtelly(userSearch){
   "async": true,
   "crossDomain": true,
   "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + userSearch +"&country=us",
+//****************************************************************************  UTELLY SECITON *********************************************************************************************** */
+function getUtelly(){
+ var settings = {
+  "async": true,
+  "crossDomain": true,
+  url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + userSearch +"&country=us",
   "method": "GET",
   "headers": {
     "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
@@ -98,6 +113,7 @@ function getUtelly(userSearch){
     }
 
     $.ajax(settings).done(function (response) {
+      console.log("Utelly" + response);
       console.log(response);
       //gets image url of result from uTelly
       var utellyImageURL = response.results[0].picture;
@@ -112,3 +128,22 @@ function getUtelly(userSearch){
 }
 
 getUtelly();
+
+//YOUTUBE section
+
+function getYoutube(userSearch){
+  var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q="+ userSearch + "+official+trailer&type=video&key=AIzaSyC4cWs_v0qBgmvKpBHqAsFIePVg_p9uuHY";
+  $.ajax({
+  url: queryURL,
+  method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    //gets video ID from youtube
+    var videoId = response.items[0].id.videoId;
+    console.log(videoId);
+    //creates the full video URL utilizing the video ID
+    var videoURL = "https://www.youtube.com/watch?v=" + videoId;
+    console.log(videoURL);
+  })
+}
+getYoutube();
