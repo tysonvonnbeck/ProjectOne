@@ -263,6 +263,7 @@ function displayToFooter() {
       console.log(myImgSrc);
       var myImg = $("<img>");
       myImg.attr("src", myImgSrc);
+      myImg.attr("href", "#modal1");
       $(".footerPosters").append(myImg);
     });
   }
