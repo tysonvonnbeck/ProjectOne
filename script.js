@@ -101,6 +101,7 @@ function getOMDBValues(response){
       console.log("omTitle = " + omTitle);
       omType = response.Search[i].Type;
       console.log("omType = " + omType);
+      omYear = response.Search[i].Year;
       $('#oResult' + i).text("");
       //display Results
       var newImgTag= $("<img />")
