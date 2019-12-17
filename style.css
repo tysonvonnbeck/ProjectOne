@@ -344,6 +344,7 @@ body.welcome {
       top: 50%;
       height: 100%;
       padding: 0px 100%;
+      z-index: -1;
     }
   }
   
