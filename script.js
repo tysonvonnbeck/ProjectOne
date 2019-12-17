@@ -259,11 +259,13 @@ function displayToFooter() {
       method: "GET"
     }).then(function(response) {
       var myImgSrc = response.Search[0].Poster;
+      var sourceName = response.Search[0].Title;
       // posterSource = ;
       console.log(myImgSrc);
       var myImg = $("<img>");
       myImg.attr("src", myImgSrc);
-      myImg.attr("href", "#modal1");
+      myImg.addClass("footerImg");
+      myImg.attr("data-name", sourceName);
       $(".footerPosters").append(myImg);
     });
   }
@@ -274,6 +276,14 @@ if (localStorage.getItem("Recent") === null) {
 }else{
   displayToFooter();
 }
+
+$(document).on("click", ".footerImg", function(){
+  var titleStart = $(this).attr("data-name");
+  getOMDB2(titleStart);
+  getUtelly(titleStart);
+  getYoutube(titleStart);
+  $("#modal1").modal("open");
+})
 
 var clickedArr = [];
 
