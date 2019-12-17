@@ -3,16 +3,22 @@
 /* comment out to hide */
 * {
     margin:0;
-	  padding: 0;
+	padding: 0;
     /* border: 1px solid black; */
     /* font-family: 'Roboto Condensed', sans-serif; */
     /* font-family: 'Abel', sans-serif; */
     font-family: 'Open Sans Condensed', sans-serif;
     color: white;
+    font-size: 20px;
 }
 
-.result-text p {
+/* .result-text p {
     font-size: 22px;
+} */
+
+.result-title p {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .navbar-fixed {
@@ -71,6 +77,10 @@ body > div.container > div:nth-child(5) > div > label {
     justify-content: space-between;
 }
 
+.title-row h4 {
+    font-weight: bold;
+}
+
 .title-row span {
     padding-right: 10px;
 }
@@ -92,6 +102,10 @@ body > div.container > div:nth-child(5) > div > label {
     height: auto;
     width: 100%;
     
+}
+
+.siteLinks {
+    margin: 5px;
 }
 
 #trailer {
