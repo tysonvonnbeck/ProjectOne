@@ -38,17 +38,18 @@ function getOMDB(someMovie){
 }
 
 function getOMDB2(someMovie){
+  console.log("getOMDB2 title="+ someMovie);
   someMovie=someMovie.replace(" ","+");
   $.ajax({
   //  url: "https://www.omdbapi.com/?t=the+dark+night&y=&plot=short&apikey=trilogy",
   url: "https://www.omdbapi.com/?t="+someMovie + "&plot=full&apikey=trilogy",
   // url: "https://www.omdbapi.com/?t="+someMovie+"&y=&plot=short&apikey=trilogy",
   method: "GET"
-}).then(function(response) {
+}).then(function(response2) {
   console.log("getOMDB2");
-  console.log( response);
+  console.log( response2);
   console.log
-  getOMB2Values(response);
+  getOMB2Values(response2);
  
   // return response;
 });
@@ -129,25 +130,41 @@ function getOMDBValues(response){
 
  }
 
- function getOMB2Values(response){
+ function getOMB2Values(response2){
+  //set rating images
+  var tomatopic = "../assets/fresh-tomato.png";
+  var imdpic = "../assets/imdb-logo.png";
+  var greenpic= "../assets/imdb-logo.png";
+  var metapic= "../assets/metacritic-logo.png"
+
    console.log("getOMDB2Values");
-   var imdbRating = response.Ratings[0].Value;
-   console.log(imdbRating);
-   $("#imdb-rate").text(imdbRating);
-   var rottenRating = response.Ratings[1].Value;
-   console.log(rottenRating);
-   $("#rotten-rate").text(rottenRating);
-   var metaRating = response.Ratings[2].Value;
-   console.log(metaRating);
-   $("meta-rate").text(metaRating);
-   var omTitle2 = response.Title;
+   $("#imdb-rate").text("--");
+   $("#rotten-rate").text("--");
+   $("meta-rate").text("--");
+
+    if (response2.Ratings.length < 2){
+      var imdbRating = response2.Ratings[0].Value;
+      console.log(imdbRating);
+      $("#imdb-rate").text(imdbRating);
+    }else if (response2.Ratings.length < 3){
+      var rottenRating = response2.Ratings[1].Value;
+      console.log(rottenRating);
+      $("#rotten-rate").text(rottenRating);
+    } else if(response2.Ratings.length < 4){
+      var metaRating = response2.Ratings[2].Value;
+      console.log(metaRating);
+      $("meta-rate").text(metaRating);
+    }
+
+
+   var omTitle2 = response2.Title;
    console.log(omTitle2);
    $("h4").text(omTitle2);
-   omYear = response.Year;
+   omYear = response2.Year;
    $(".year").text(omYear);
    console.log(omYear);
    //set the rating
-   var omRated= response.Rated;
+   var omRated= response2.Rated;
    $(".MPAA").text(omRated);
    console.log(omRated);
  }
@@ -215,6 +232,7 @@ function getYoutube(userSearch){
 $("#oResult0").click(function(){
   modalMovie = $("#oResultTitle0").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  console.log("ClicModal 1 Title" + modifiedTitle);
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
@@ -222,6 +240,7 @@ $("#oResult0").click(function(){
 $("#oResult1").click(function(){
   modalMovie = $("#oResultTitle1").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  console.log("ClickModal 2 modifiedTitle=" + modifiedTitle);
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
@@ -229,6 +248,7 @@ $("#oResult1").click(function(){
 $("#oResult2").click(function(){
   modalMovie = $("#oResultTitle2").text();
   var modifiedTitle = modalMovie.replace("Title: ", "");
+  console.log("ClickModal 3 modifiedTitle=" + modifiedTitle);
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
