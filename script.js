@@ -37,6 +37,7 @@ function getOMDB(someMovie){
   
 }
 
+
 function getOMDB2(someMovie){
   console.log("getOMDB2 title="+ someMovie);
   someMovie=someMovie.replace(" ","+");
@@ -50,9 +51,7 @@ function getOMDB2(someMovie){
   console.log( response2);
   console.log
   getOMB2Values(response2);
- 
-  // return response;
-});
+  });
 
 }
 
@@ -131,26 +130,46 @@ function getOMDBValues(response){
  }
 
  function getOMB2Values(response2){
+   
+  console.log("getOMDB2Values");
   //set rating images
-  var tomatopic = "../assets/fresh-tomato.png";
-  var imdpic = "../assets/imdb-logo.png";
-  var greenpic= "../assets/imdb-logo.png";
-  var metapic= "../assets/metacritic-logo.png"
+  var tomatopic = "assets/fresh-tomato.png";
+  var imdpic = "assets/imdb-logo.jpg";
+  var greenpic= "assets/imdb-logo.jpg";
+  var metapic= "assets/metacritic-logo.png"
+  $("#imdb-pic").attr("src",imdpic);
+  $("#meta-pic").attr("src",metapic);
+  $("#tomato-pic").attr("src",tomatopic);
 
-   console.log("getOMDB2Values");
-   $("#imdb-rate").text("--");
-   $("#rotten-rate").text("--");
-   $("meta-rate").text("--");
+  
 
-    if (response2.Ratings.length < 2){
+   $("#imdb-rate").text("N/A");
+   $("#rotten-rate").text("N/A");
+   $("meta-rate").text("N/A");
+
+    console.log("getOMB2Values ratings length=" + response2.Ratings.length);
+    if (response2.Ratings.length > 0){
       var imdbRating = response2.Ratings[0].Value;
-      console.log(imdbRating);
+      console.log("imdbrating" + imdbRating);
       $("#imdb-rate").text(imdbRating);
-    }else if (response2.Ratings.length < 3){
-      var rottenRating = response2.Ratings[1].Value;
-      console.log(rottenRating);
-      $("#rotten-rate").text(rottenRating);
-    } else if(response2.Ratings.length < 4){
+    }
+
+     if (response2.Ratings.length > 1){
+        var rottenRating = response2.Ratings[1].Value;
+        console.log(rottenRating);
+        //Remove % and convert text to Integer
+        var textRating= rottenRating.replace("%","");
+        var intRating = parseInt(textRating);
+        console.log("intRating= " + intRating);
+        $("#rotten-rate").text(rottenRating);
+        if (intRating > 60){
+          $("#tomato-pic").attr("src",tomatopic);
+        }else{
+          $("#tomato-pic").attr("src",greenpic);
+        }
+     }
+
+     if (response2.Ratings.length > 2){
       var metaRating = response2.Ratings[2].Value;
       console.log(metaRating);
       $("meta-rate").text(metaRating);
