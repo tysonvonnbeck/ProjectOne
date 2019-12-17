@@ -51,6 +51,9 @@ function getOMDB2(someMovie){
   console.log( response2);
   console.log
   getOMB2Values(response2);
+  var modalImageURL = response2.Poster;
+  console.log(modalImageURL);
+  $(".modalImage").attr("src", modalImageURL);
   });
 
 }
@@ -210,7 +213,7 @@ function getUtelly(userSearch){
       var utellyImageURL = response.results[0].picture;
       console.log(utellyImageURL);
       // sets modal image source to utelly image
-      $(".modalImage").attr("src", utellyImageURL);
+      // $(".modalImage").attr("src", utellyImageURL);
       //gets a varying number of site sources from uTelly
       for (let i = 0; i < response.results[0].locations.length; i++) {
         var siteName = response.results[0].locations[i].display_name;
