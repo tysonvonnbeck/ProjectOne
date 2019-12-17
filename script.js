@@ -206,8 +206,6 @@ function getUtelly(userSearch){
     });
 }
 
-// getUtelly();
-
 //YOUTUBE section
 
 function getYoutube(userSearch){
@@ -227,7 +225,32 @@ function getYoutube(userSearch){
     $(".iframe").attr("src", videoURL);
   })
 }
-// getYoutube();
+
+function displayToFooter() {
+  var retrievedData = localStorage.getItem("Recent");
+  var recentMoviesArr = JSON.parse(retrievedData);
+  for (let i = 0; i < recentMoviesArr.length; i++) {
+    var recentMovieName = recentMoviesArr[i];
+    recentMovieName = recentMovieName.replace(" ", "+");
+    $.ajax({
+      url:
+        "https://www.omdbapi.com/?s=" +
+        recentMovieName +
+        "&y=&plot=short&apikey=trilogy",
+      method: "GET"
+    }).then(function(response) {
+      var myImgSrc = response.Search[0].Poster;
+      // posterSource = ;
+      console.log(myImgSrc);
+      var myImg = $("<img>");
+      myImg.attr("src", myImgSrc);
+      $(".footerPosters").append(myImg);
+    });
+  }
+}
+
+displayToFooter();
+var clickedArr = [];
 
 $("#oResult0").click(function(){
   modalMovie = $("#oResultTitle0").text();
@@ -236,6 +259,9 @@ $("#oResult0").click(function(){
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
+  clickedArr.push(modifiedTitle);
+  var mylocal=localStorage.getItem("Recent");
+  localStorage.setItem("Recent", JSON.stringify(clickedArr));
 })
 $("#oResult1").click(function(){
   modalMovie = $("#oResultTitle1").text();
@@ -244,6 +270,9 @@ $("#oResult1").click(function(){
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
+  clickedArr.push(modifiedTitle);
+  var mylocal=localStorage.getItem("Recent");
+  localStorage.setItem("Recent", JSON.stringify(clickedArr));
 })
 $("#oResult2").click(function(){
   modalMovie = $("#oResultTitle2").text();
@@ -252,4 +281,7 @@ $("#oResult2").click(function(){
   getOMDB2(modifiedTitle);
   getUtelly(modifiedTitle);
   getYoutube(modifiedTitle);
+  clickedArr.push(modifiedTitle);
+  var mylocal=localStorage.getItem("Recent");
+  localStorage.setItem("Recent", JSON.stringify(clickedArr));
 })
