@@ -269,7 +269,12 @@ function displayToFooter() {
   }
 }
 
-displayToFooter();
+if (localStorage.getItem("Recent") === null) {
+  
+}else{
+  displayToFooter();
+}
+
 var clickedArr = [];
 
 $("#oResult0").click(function(){
