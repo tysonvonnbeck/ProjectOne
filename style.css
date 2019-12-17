@@ -56,7 +56,7 @@ container {
 }
 
 /* search bar placeholder text color */
-body > div.container > div:nth-child(5) > div > label {
+#search-form > div > label {
     color: white;
 }
 
