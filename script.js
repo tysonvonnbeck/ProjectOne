@@ -13,13 +13,18 @@ var movieList = {
   imdbId: "",
  };
 
-console.log("what")
- $("#findbtn").on("click", function(){
-  clearResults();
-  console.log($("#autocomplete-input").val());
-  let userSearch=$("#autocomplete-input").val().trim();
-  getOMDB(userSearch);
-})
+
+ function searchIt(event){
+   event.preventDefault();
+   clearResults();
+   console.log($("#autocomplete-input").val());
+   let userSearch=$("#autocomplete-input").val().trim();
+   getOMDB(userSearch);
+
+ }
+
+ $("#search-form").on("submit", searchIt)
+  $("#findbtn").on("click", searchIt)
 
 
 
@@ -151,6 +156,9 @@ function getOMDBValues(response){
    $("#rotten-rate").text("N/A");
    $("#meta-rate").text("N/A");
 
+   console.log("getOMB2Values ratings:", response2.Ratings.length);
+
+
     console.log("getOMB2Values ratings length=" + response2.Ratings.length);
     if (response2.Ratings.length > 0){
       var imdbRating = response2.Ratings[0].Value;
@@ -159,6 +167,7 @@ function getOMDBValues(response){
     }
 
      if (response2.Ratings.length > 1){
+        // $(".rotten-rating").show();
         var rottenRating = response2.Ratings[1].Value;
         console.log("rottenrating" + rottenRating);
         //Remove % and convert text to Integer
@@ -173,12 +182,15 @@ function getOMDBValues(response){
         }else{
           $("#tomato-pic").attr("src",greenpic);
         }
-     }
+      } 
+      //else {
+    //   $(".rotten-rating").hide();
+    //  }
 
      if (response2.Ratings.length > 2){
       var metaRating = response2.Ratings[2].Value;
       console.log(metaRating);
-      $("meta-rate").text(metaRating);
+      $("#meta-rate").text(metaRating);
     }
 
 
@@ -345,7 +357,6 @@ $("#oResult1").click(function(){
   clickedArr.push(modifiedTitle);
   var mylocal=localStorage.getItem("Recent");
   localStorage.setItem("Recent", JSON.stringify(clickedArr));
-  debugger;
   addToFooter(modifiedTitle);
 })
 $("#oResult2").click(function(){
