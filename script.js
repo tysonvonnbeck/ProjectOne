@@ -106,6 +106,7 @@ function getOMDBValues(response){
       console.log("omTitle = " + omTitle);
       omType = response.Search[i].Type;
       console.log("omType = " + omType);
+      omYear = response.Search[i].Year;
       $('#oResult' + i).text("");
       //display Results
       var newImgTag= $("<img />")
@@ -316,7 +317,15 @@ if (localStorage.getItem("Recent") === null) {
   displayToFooter();
 }
 
-$(document).on("click", ".footerImg", function(){
+var footerImgNew = document.querySelectorAll(".footerImg");
+
+// footerImgNew.click(function(){
+//   console.log("hello");
+  
+// })
+
+$(document).on("click",".footerImg",  function(){
+  console.log("works", $(this));
   var titleStart = $(this).attr("data-name");
   getOMDB2(titleStart);
   getUtelly(titleStart);
