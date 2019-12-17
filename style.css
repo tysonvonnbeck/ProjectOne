@@ -84,6 +84,7 @@ label {
     padding: 20px;
     text-align: center;
     font-size: 18px;
+    margin: 5px auto;
 }
 
 #modal1 .button {
@@ -124,10 +125,6 @@ label {
     height: auto;
     width: 100%;
     
-}
-
-.siteLinks {
-    margin: 5px;
 }
 
 #trailer {
