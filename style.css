@@ -16,6 +16,10 @@
     font-size: 22px;
 } */
 
+.result-row {
+    height: 30vh;
+}
+
 .result-title p {
     font-size: 30px;
     font-weight: bold;
@@ -27,6 +31,15 @@
  animation: moveIn 2s 3.1s ease forwards;
 }
 
+.logo {
+  height: 8vh;
+  line-height: 7vh;
+}
+
+b {
+  font: 3em 'Open Sans Condensed', sans-serif;
+}
+
 /* main content conatianer except footer and navbar  */
 container {
     display:flex;
@@ -34,11 +47,14 @@ container {
     /* flex-direction: column; */
 }
 
+
+
 /* search bar underline  color */
 .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid white !important;
     box-shadow: 0 1px 0 0 white !important;
 }
+
 /* search bar placeholder text color */
 body > div.container > div:nth-child(5) > div > label {
     color: white;
@@ -46,6 +62,12 @@ body > div.container > div:nth-child(5) > div > label {
 
 #autocomplete-input.autocomplete {
     border-bottom: 2px solid white;
+}
+
+/* hiding label for animation intro */
+label {
+  opacity: 0;
+  animation: moveIn 2s 3.1s ease forwards;
 }
 
 .modal-container .container {
@@ -141,9 +163,14 @@ body > div.container > div:nth-child(5) > div > label {
 /* footer */
 footer {
   height: auto;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
+  /* padding: 0 0 0 0;
+  margin: 0 0 0 0; */
   
+}
+
+footer .footerPosters img {
+    padding: 10px;
+    height: 20vh;
 }
 
 /* Recents Bar */
@@ -217,7 +244,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 30vh;
 }
 
 .movie-poster > img {
@@ -260,10 +287,10 @@ body.welcome {
     -webkit-font-smoothing: antialiased;
   }
   
-  /* .welcome .splash {
+  .welcome .splash {
     height: 0px;
     padding: 0px;
-    border: 130em solid red;
+    border: 130em solid black;
     position: fixed;
     left: 50%;
     top: 100%;
@@ -274,10 +301,10 @@ body.welcome {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-  } */
+  }
   
   .welcome #welcome {
-    background: white;
+    background: #78909c;
     width: 56px;
     height: 56px;
     position: absolute;
@@ -346,7 +373,7 @@ body.welcome {
   
   @keyframes moveUp {
     0% {
-      background: black;
+      background: #78909c;
       top: 100%;
     }
     50% {
@@ -354,20 +381,20 @@ body.welcome {
     }
     100% {
       top: 50%;
-      background: white;
+      background: #78909c;
     } 
   }
   
   @keyframes materia {
     0% {
-      background: white;
+      background: #78909c;
     }
     50% {
-      background: white;
+      background: #78909c;
       top: 26px;
     }
     100% {
-      background: black;
+      background: #78909c;
       width: 100%;
       height: 64px;
       border-radius: 0px;
