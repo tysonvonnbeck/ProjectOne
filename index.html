@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Favicon -->
+  <link rel='icon' href='parlor.ico' type='image/x-icon' />
+  <link rel="shortcut icon" href="parlor.ico" type="image/x-icon" />
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Abel|Open+Sans+Condensed:300|Roboto+Condensed&display=swap"
+    rel="stylesheet">
+  <!-- Materialize Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <title>Parlor Flix</title>
+</head>
+
+<!-- navbar -->
+
+  <div class="navbar-fixed nav-wrapper center navbar z-depth-0 blue-grey lighten-2 logo welcome" id="navbar">
+    <b>PARLOR FLIX</b>
+  </div>
+
+<!-- Body -->
+<body class="welcome blue-grey lighten-2">
+  <span id="splash-overlay" class="splash"></span>
+  <span id="welcome" class="z-depth-4"></span>
+  <div class="container">
+    <!-- space between nav and search -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Search Bar -->
+    <div class="row">
+      <form id="search-form">
+        <div class="input-field col s12">
+          <i class="material-icons prefix"></i>
+          <label for="autocomplete-input">movie or show title
+          </label>
+          <input type="text" id="autocomplete-input" class="autocomplete" />
+          <a class="btn waves-effect waves-light blue-grey lighten-1 right" id="findbtn">Find</a>
+        </div>
+      </form>
+    </div>
+    <!-- results -->
+    <div class="result-row row">
+      <div href="#modal1" class="col s3 movie-poster results waves-effect waves-light modal-trigger" id="oResult0">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s9  oResultText result-text">
+        <div class="row result-title" id=oResultTitle0></div>
+        <div class="row result-info" id=oResultInfo0></div>
+      </div>
+    </div>
+    <!--end row 1-->
+
+    <div class="result-row row">
+      <div href="#modal1" class="col s3 movie-poster results  waves-effect waves-light modal-trigger" id="oResult1">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s9  oResultText result-text">
+        <div class="row result-title" id=oResultTitle1></div>
+        <div class="row result-info" id=oResultInfo1></div>
+      </div>
+    </div>
+    <!--end row 2-->
+
+    <div class="result-row row">
+      <div href="#modal1" class="col s3 movie-poster results  waves-effect waves-light modal-trigger" id="oResult2">
+        <!--Poster goes here-->
+      </div>
+      <div class="col s9  oResultText result-text">
+        <div class="row result-title" id=oResultTitle2></div>
+        <div class="row result-info" id=oResultInfo2></div>
+      </div>
+    </div>
+    <!--end row 3-->
+
+  </div>
+  </div>
+  <!-- container close-->
+
+
+
+  <!-- Footer -->
+  <footer class="page-footer blue-grey lighten-1 row center-align" id="recents">
+    <!-- Recents Bar -->
+    <div class="footerPosters"></div>
+    <!-- <div class="col s1" id="r0">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r1">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r2">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r3">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r4">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r5">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r6">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div>
+    <div class="col s1" id="r7">
+      <img href="#modal1" class="responsive-img modal-trigger" src="https://via.placeholder.com/50" alt="">
+    </div> -->
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal1" style="width:100%;height:80%;" class="modal bottom-sheet blue-grey lighten-2">
+    <!-- modal container -->
+    <div class="modal-container">
+      <div class="modal-content">
+        <div class="title-row">
+          <div>
+            <h4>Title</h4>
+            <p>
+              <span class="year">1998</span><span class="MPAA">PG-13</span>
+            </p>
+          </div>
+          <div class="ratings">
+            <div class="rating rotten-rating">
+              <img src="http://placekitten.com/30/30" alt="rotten tomato icon" id="tomato-pic">
+              <span id= "rotten-rate" class="rate-number"></span>
+            </div>
+            <div class="rating imdb-rating">
+              <img src="http://placekitten.com/30/30" alt="imdb icon" id="imdb-pic">
+              <span id = "imdb-rate" class="rate-number"></span>
+            </div>
+            <div class="rating metacritic-rating">
+              <img src="http://placekitten.com/30/30" alt="metacritic rating" id="meta-pic">
+              <span id="meta-rate" class="rate-number"></span>
+
+            </div>
+          </div>
+        </div>
+        <!-- Youtube 'Official Trailers' -->
+        <div class="row content-row">
+          <div class="col s4 poster-column">
+            <!-- poster goes here -->
+            <img class="modalImage" src="http://www.placekitten.com/200/300" alt="">
+          </div>
+          <div class="col s2">
+            <!-- list of streaming links goes here -->
+            <h5 class="center-align">STREAMING</h5>
+            <div class="streamLinks"></div>
+            <!-- <div class="button netflix">
+              <a href="http://www.netflix.com">Netflix</a>
+            </div>
+            <div class="button itunes">
+              <a href="http://www.apple.com">iTunes</a>
+            </div>
+            <div class="button amazon">
+              <a href="http://www.Amazon.com">Amazon Prime</a>
+            </div>
+            <div class="button google">
+              <a href="http://www.google.com">Google Play</a>
+            </div> -->
+          </div>
+          <div class="col s6">
+            <h5 class="center-align">TRAILER</h5>
+            <div id="trailer">
+              <iframe class="iframe" src="https://www.youtube.com/embed/ScMzIvxBSi4" allow="encrypted-media"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- modal container close -->
+
+    <!-- modal footer hidden -->
+    <div class="modal-footer hideElem">
+      <a href="#!" class="modal-close waves-effect waves-green" a>
+    </div>
+
+    <!-- JQuery uncompressed -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- Materialize Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Links to javacript file DO NOT DELETE-->
+    <script src="script.js"></script>
+    <script type="text/javascript"></script>
+    <!-- DO NOT DELETE-->
+    <!-- In-Line Modal Script -->
+    <script>
+      $(document).ready(function () {
+        $(".modal").modal();
+      });
+    </script>
+</body>
+
+</html>
