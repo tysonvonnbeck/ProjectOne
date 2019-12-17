@@ -16,6 +16,10 @@
     font-size: 22px;
 } */
 
+.result-row {
+    height: 30vh;
+}
+
 .result-title p {
     font-size: 30px;
     font-weight: bold;
@@ -141,9 +145,14 @@ body > div.container > div:nth-child(5) > div > label {
 /* footer */
 footer {
   height: auto;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
+  /* padding: 0 0 0 0;
+  margin: 0 0 0 0; */
   
+}
+
+footer .footerPosters img {
+    padding: 10px;
+    height: 20vh;
 }
 
 /* Recents Bar */
@@ -217,7 +226,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 30vh;
 }
 
 .movie-poster > img {
