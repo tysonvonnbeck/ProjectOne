@@ -13,7 +13,7 @@ var movieList = {
   imdbId: "",
  };
 
-
+console.log("what")
  $("#findbtn").on("click", function(){
   clearResults();
   console.log($("#autocomplete-input").val());
@@ -304,7 +304,15 @@ if (localStorage.getItem("Recent") === null) {
   displayToFooter();
 }
 
-$(document).on("click", ".footerImg", function(){
+var footerImgNew = document.querySelectorAll(".footerImg");
+
+// footerImgNew.click(function(){
+//   console.log("hello");
+  
+// })
+
+$(document).on("click",".footerImg",  function(){
+  console.log("works", $(this));
   var titleStart = $(this).attr("data-name");
   getOMDB2(titleStart);
   getUtelly(titleStart);
@@ -336,6 +344,7 @@ $("#oResult1").click(function(){
   clickedArr.push(modifiedTitle);
   var mylocal=localStorage.getItem("Recent");
   localStorage.setItem("Recent", JSON.stringify(clickedArr));
+  debugger;
   addToFooter(modifiedTitle);
 })
 $("#oResult2").click(function(){
