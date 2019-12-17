@@ -116,12 +116,12 @@ function getOMDBValues(response){
       // Set the title;
       var ptag = $('<p>')
       // ptag.attr("id", "oResultTitle"+i);
-      ptag.text("Title: " + omTitle);
+      ptag.text(omTitle);
       ptag.appendTo('#oResultTitle' + i)
 
       //Set the info
       var ptag = $('<p>')
-      var infoText = "Year: " + omYear + "                    Type: " +omType ;
+      var infoText = "Year: " + omYear + ", " + "Type: " +omType ;
       ptag.text(infoText);
       ptag.appendTo('#oResultInfo' + i);
       
@@ -134,9 +134,9 @@ function getOMDBValues(response){
   console.log("getOMDB2Values");
   //set rating images
   var tomatopic = "assets/fresh-tomato.png";
-  var imdpic = "assets/imdb-logo.jpg";
-  var greenpic= "assets/imdb-logo.jpg";
-  var metapic= "assets/metacritic-logo.png"
+  var imdpic = "assets/imdb-logo3.png";
+  var greenpic= "assets/green-tomato2.png";
+  var metapic= "assets/metacritic-logo2.png";
   $("#imdb-pic").attr("src",imdpic);
   $("#meta-pic").attr("src",metapic);
   $("#tomato-pic").attr("src",tomatopic);
