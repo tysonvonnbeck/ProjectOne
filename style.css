@@ -379,3 +379,9 @@ body.welcome {
     }
   } 
 
+
+  /*MOdal Styling*/
+  .ratings img{
+      width: 20px;
+      height: 20px;
+  }
