@@ -154,7 +154,10 @@ function getOMDBValues(response){
    $("#imdb-rate").text("N/A");
    $("#rotten-rate").text("N/A");
    $("#meta-rate").text("N/A");
+
    console.log("getOMB2Values ratings:", response2.Ratings.length);
+
+
     console.log("getOMB2Values ratings length=" + response2.Ratings.length);
     if (response2.Ratings.length > 0){
       var imdbRating = response2.Ratings[0].Value;
@@ -165,11 +168,13 @@ function getOMDBValues(response){
      if (response2.Ratings.length > 1){
         // $(".rotten-rating").show();
         var rottenRating = response2.Ratings[1].Value;
-        console.log(rottenRating);
+        console.log("rottenrating" + rottenRating);
         //Remove % and convert text to Integer
         var textRating= rottenRating.replace("%","");
         var intRating = parseInt(textRating);
         console.log("intRating= " + intRating);
+        console.log("rottenRating=" + rottenRating);
+        
         $("#rotten-rate").text(rottenRating);
         if (intRating > 60){
           $("#tomato-pic").attr("src",tomatopic);
